@@ -25,18 +25,24 @@ if snack == "savory":
 
         meat_pie = raw_input("> ")
 
-        if meat_pie == "ham"
-         
-        if meat_pie == "beef"
-        if meat_pie == "long pig"
+        if meat_pie == "ham":
+            print "You receive a meat pie. Congrat."
+        elif meat_pie == "beef":
+            print "You receive a meat pie. It's okay."
+        elif meat_pie == "long pig":
+            print "Are you sure? Well...alright then."
+            print "You receive your meat pie. It's a little gamey."
+        else:
+            print "You get nothing."
 
     elif savory == "quiche":
+        print "Today's quiche is spinach and cheese. Hope you're okay with that."
+        print "You receive a slice of quiche."
 
-
-    elif savory == "What else?":
-
+    #elif savory == "What else?":
+    #    print "Oh...uh....nothing."
 
     elif savory == "something else":
-
+        print "Oh...something else you say? Let me see what we have to offer."
 
     else:
