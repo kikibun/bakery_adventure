@@ -15,7 +15,7 @@ if snack == "sweet":
         print "The cake was poisoned. You die in agony. Sorry."
     else:
         print "Please choose a cake."
-if snack == "savory":
+elif snack == "savory":
     print "I see, something with less sugar in it, then. Would you like a meat pie? Quiche? Something...else?"
 
     savory = raw_input("> ")
@@ -46,3 +46,7 @@ if snack == "savory":
         print "Oh...something else you say? Let me see what we have to offer."
 
     else:
+        print "If you aren't going to choose something, you should leave."
+
+else:
+    print "Sorry, we don't have %s today." % snack
