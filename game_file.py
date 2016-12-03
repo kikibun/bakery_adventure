@@ -1,6 +1,7 @@
 nosy_counter = 0
+police_officer = False
 def pastry():
-    global nosy_counter
+    global nosy_counter, police_officer
     snack = raw_input("> ")
 
     if snack == "sweet":
@@ -9,11 +10,22 @@ def pastry():
         cake = raw_input("> ")
 
         if cake == "chocolate cake" or cake == "chocolate":
-            print "Baker: 'Oh, we're actually sold out of that, sorry. Come back tommorow and try again!' \nYou exit the bakery."
+            print "Baker: 'Oh, we're actually sold out of that, sorry.'"
+            if police_officer == True:
+                print "Baker: 'But let me give you this instead to thank you for your service.'\nYou reveive a glazed donut."
+            else:
+                print "'Come back tommorow and try again!' \nYou exit the bakery."
         elif cake == "carrot cake" or cake == "carrot":
-            print "Baker: 'Excellent choice.' \nYou take your cake and leave. Bye!"
+            print "Baker: 'Excellent choice.'"
+            if police_officer == True:
+                print "To your surprise, the baker has drawn your badge in the icing. Nice!"
+            else:
+                print "You take your cake and leave. Bye!"
         elif cake == "red velvet cake" or cake == "red velvet":
-            print "The cake was poisoned. You die in agony. Sorry."
+            if police_officer == True:
+                print "Baker: 'Uh....why don't you take this instead.'\n You received a glazed donut."
+            else:
+                print "The cake was poisoned. You die in agony. Sorry."
         else:
             print "Baker: 'Please choose a cake. We can't keep %s on the shelves!'" % cake
 
@@ -28,23 +40,36 @@ def pastry():
             meat_pie = raw_input("> ")
 
             if meat_pie == "ham":
-                print "You receive a meat pie. Congrat."
+                if police_officer == True:
+                    print "The baker smirks about the irony, but hands you the pie regardless."
+                else:
+                    print "You receive a meat pie. Congrat."
             elif meat_pie == "beef":
-                print "You receive a meat pie. It's okay."
+                if police_officer == True:
+                    print "The baker slips a little something in the bag. It's another meat pie! Aw."
+                else:
+                    print "You receive a meat pie. It's okay."
             elif meat_pie == "long pig":
-                print "Baker: 'Are you sure? Well...alright then.'"
-                print "You receive your meat pie. It's a little gamey."
+                if police_officer == True:
+                    print "Baker: 'You know what...why don't you take this instead.'\nYou receive a glazed donut."
+                else:
+                    print "Baker: 'Are you sure? Well...alright then.'"
+                    print "You receive your meat pie. It's a little gamey."
             else:
                 print "You get nothing. The baker is a busy man, don't waste his time."
 
         elif savory == "quiche":
-            print "Baker: 'Today's quiche is spinach and cheese. Hope you're okay with that.'\nYou receive a slice of quiche."
+            if police_officer == True:
+                print "Baker: 'We've got an armed forces special in the back, let me go grab it.'\nYou receive a slice of tomato bacon quiche."
+            else:
+                print "Baker: 'Today's quiche is spinach and cheese. Hope you're okay with that.'\nYou receive a slice of quiche."
 
         elif savory in ["What else?", "what else", "what else?"]:
             print "Baker: 'Oh...uh....nothing. Did you still want something sweet or savory?'"
             nosy_counter += 1
             if nosy_counter == 3:
                 print "Baker: 'You ask too many questions. Come back when you know what you want.'\nThe baker glares at you until you leave."
+                exit(0)
             pastry()
 
         elif savory == "something else":
@@ -53,7 +78,9 @@ def pastry():
 
             fuzz = raw_input("> ")
             if fuzz in ["yea", "yes", "yeah"]:
-                print "Baker: 'Oh, hello officer! Has anybody offered you the police discount?'"
+                police_officer = True
+                print "Baker: 'Oh, hello officer! Has anybody offered you the police discount? Something sweet or savory today?'"
+                pastry()
             elif fuzz in ["no", "naw", "no way"]:
                 print "Baker: 'Sorry, I had to ask. You understand.'"
                 print "You receive a bag of...special herbs."
